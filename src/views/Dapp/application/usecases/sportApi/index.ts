@@ -30,8 +30,8 @@ export const getMatchFullDetails = async (param: Params) => {
     
     const targetMatch = res.data.response.find(
         (data: any) =>
-            data.teams.home.name === teamA &&
-            data.teams.away.name === teamB &&
+            (data.teams.home.name === teamA || data.teams.away.name === teamA) &&
+            (data.teams.away.name === teamB || data.teams.home.name === teamB) &&
             data.league.name === league
     );
     return targetMatch;
